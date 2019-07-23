@@ -65,12 +65,12 @@ def drop(n: int, it: Iterable[Any]) -> List[Any]:
     return list(it)[n:]
 
 
-def split_at(n: int, it: Iterable[Any]) -> List[List[Any], List[Any]]:
+def split_at(n: int, it: Iterable[Any]) -> List[List[Any]]:
     """Split an iterable object into N elements"""
     return [take(n, it), drop(n, it)]
 
 
-def span(func: Callable[[Any], bool], it: Iterable[Any]) -> List[List[Any], List[Any]]:
+def span(func: Callable[[Any], bool], it: Iterable[Any]) -> List[List[Any]]:
     """
     Find the iterable object from the top and divide it into
     two by the element that does not satisfy the condition
