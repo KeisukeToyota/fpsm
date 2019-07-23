@@ -3,50 +3,90 @@ import fpsm
 
 
 class TestFpsm(unittest.TestCase):
-    l1 = [1, 2, 3, 4, 5]
-    l2 = range(2, 11)
-    l3 = 'hello world'
-
     def test_head(self):
-        self.assertEqual(fpsm.head(self.l1), 1)
-        self.assertEqual(fpsm.head(self.l2), 2)
-        self.assertEqual(fpsm.head(self.l3), 'h')
+        res = fpsm.head([1, 2, 3, 4, 5])
+        ans = 1
+        self.assertEqual(res, ans)
 
     def test_tail(self):
-        self.assertEqual(fpsm.tail(self.l1), [2, 3, 4, 5])
-        self.assertEqual(fpsm.tail(self.l2), list(range(3, 11)))
-        self.assertEqual(fpsm.tail(self.l3), 'ello world')
+        res = fpsm.tail([1, 2, 3, 4, 5])
+        ans = [2, 3, 4, 5]
+        self.assertEqual(res, ans)
 
     def test_init(self):
-        self.assertEqual(fpsm.init(self.l1), [1, 2, 3, 4])
-        self.assertEqual(fpsm.init(self.l2), list(range(2, 10)))
-        self.assertEqual(fpsm.init(self.l3), 'hello worl')
+        res = fpsm.init([1, 2, 3, 4, 5])
+        ans = [1, 2, 3, 4]
+        self.assertEqual(res, ans)
 
     def test_last(self):
-        self.assertEqual(fpsm.last(self.l1), 5)
-        self.assertEqual(fpsm.last(self.l2), 10)
-        self.assertEqual(fpsm.last(self.l3), 'd')
+        res = fpsm.last([1, 2, 3, 4, 5])
+        ans = 5
+        self.assertEqual(res, ans)
 
     def test_take(self):
-        self.assertEqual(fpsm.take(3, self.l1), [1, 2, 3])
-        self.assertEqual(fpsm.take(2, self.l2), [2, 3])
-        self.assertEqual(fpsm.take(4, self.l3), 'hell')
+        res = fpsm.take(3, [1, 2, 3, 4, 5])
+        ans = [1, 2, 3]
+        self.assertEqual(res, ans)
 
     def test_null(self):
-        self.assertEqual(fpsm.null([]), True)
-        self.assertEqual(fpsm.null(range(10)), False)
+        res = fpsm.null([])
+        ans = True
+        self.assertEqual(res, ans)
 
     def test_foldl(self):
-        self.assertEqual(fpsm.foldl(lambda x, y: 2 * x + y, [1, 1, 0]), 6)
+        res = fpsm.foldl(lambda x, y: 2 * x + y, [1, 1, 0])
+        ans = 6
+        self.assertEqual(res, ans)
 
     def test_foldr(self):
-        self.assertEqual(fpsm.foldr(lambda x, y: x + y * 2, [1, 0, 1]), 5)
+        res = fpsm.foldr(lambda x, y: x + y * 2, [1, 0, 1])
+        ans = 5
+        self.assertEqual(res, ans)
 
     def test_concat(self):
-        self.assertEqual(fpsm.concat([[1,2,3], [4,5,6]]), list(range(1, 7)))
+        res = fpsm.concat([1, 2, 3], [4, 5, 6])
+        ans = list(range(1, 7))
+        self.assertEqual(res, ans)
 
     def test_concat_map(self):
-        self.assertEqual(fpsm.concat_map(lambda x: [0, x], [[1,2,3,4,5,6]]), [0,1,0,2,0,3,0,4,0,5,0,6])
+        res = fpsm.concat_map(lambda x: [0, x], [1, 2], [3, 4])
+        ans = [0, 1, 0, 2, 0, 3, 0, 4]
+        self.assertEqual(res, ans)
+
+    def test_product(self):
+        res = fpsm.product(range(1, 6))
+        ans = 120
+        self.assertEqual(res, ans)
+
+    def test_drop(self):
+        res = fpsm.drop(2, range(5))
+        ans = [2, 3, 4]
+        self.assertEqual(res, ans)
+
+    def test_split_at(self):
+        res = fpsm.split_at(3, range(5))
+        ans = [[0, 1, 2], [3, 4]]
+        self.assertEqual(res, ans)
+
+    def test_span(self):
+        res = fpsm.span(lambda x: x < 4, [1, 3, 4, 5, 1, 2])
+        ans = [[1, 3], [4, 5, 1, 2]]
+        self.assertEqual(res, ans)
+
+    def test_elem(self):
+        res = fpsm.elem(3, range(5))
+        ans = True
+        self.assertEqual(res, ans)
+
+    def test_not_elem(self):
+        res = fpsm.not_elem(3, range(5))
+        ans = False
+        self.assertEqual(res, ans)
+
+    def test_flatten(self):
+        res = fpsm.flatten([range(2), range(3)])
+        ans = [0, 1, 0, 1, 2]
+        self.assertEqual(res, ans)
 
 
 if __name__ == '__main__':
