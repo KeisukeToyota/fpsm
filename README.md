@@ -1,3 +1,5 @@
-# iter-utils
+# fpsm
+
+Functional Programming Support Modules
 
 
