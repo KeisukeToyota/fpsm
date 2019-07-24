@@ -88,6 +88,12 @@ class TestFpsm(unittest.TestCase):
         ans = [0, 1, 0, 1, 2]
         self.assertEqual(res, ans)
 
+    def test_infinite(self):
+        inf = fpsm.infinite(2)
+        res = [next(inf) for _ in range(5)]
+        ans = [2, 3, 4, 5, 6]
+        self.assertEqual(res, ans)
+
 
 if __name__ == '__main__':
     unittest.main()
