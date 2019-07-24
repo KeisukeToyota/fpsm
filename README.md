@@ -12,4 +12,6 @@ Lightweight modules that summarize the functions required for functional program
 $ pip3 install fpsm
 ```
 
+## Documentation
+[here](https://keisuketoyota.github.io/fpsm/)
 
