@@ -1,0 +1,10 @@
+fpsm package
+============
+
+Module contents
+---------------
+
+.. automodule:: fpsm
+   :members:
+   :undoc-members:
+   :show-inheritance:
